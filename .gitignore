@@ -1,4 +1,4 @@
-./output
-./allure_report
-./.idea
-./.venv
+output
+allure_report
+.idea
+.venv
