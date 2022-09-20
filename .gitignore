@@ -1,0 +1,4 @@
+./output
+./allure_report
+./.idea
+./.venv
