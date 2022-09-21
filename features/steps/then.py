@@ -3,4 +3,6 @@ from behave import then
 
 @then("User gets page title")
 def get_title(context):
-    print("Title: Google")
+    # title = context.browser.title
+    title = context.selenium.get_title
+    print(f"Page title {title}")

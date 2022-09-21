@@ -1,0 +1,14 @@
+{
+    "user": "ashishvishwakarm_UmSqlW",
+    "key": "zQY7ZUWjYsDqq4M2T7fB",
+  
+    "capabilities": {
+      "build": "behave-browserstack",
+      "name": "single_test",
+      "browserstack.debug": true
+    },
+  
+    "environments": [{
+      "browser": "chrome"
+    }]
+  }

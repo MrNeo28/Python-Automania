@@ -13,3 +13,7 @@ class Browser:
 
     def maximize_window(self):
         self.driver.maximize_window()
+
+    @property
+    def get_title(self) -> str:
+        return self.driver.title

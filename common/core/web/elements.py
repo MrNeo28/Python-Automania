@@ -25,9 +25,11 @@ class Finder:
         super().__init__(self.driver)
 
     def find_element_by_xpath(self, locator) -> WebElement:
+        
+        wait = WebDriverWait(self.driver, 10)
 
         try:
-            return self.wait.until(
+            return wait.until(
                 EC.visibility_of_element_located((By.XPATH, locator))
             )
         except NoSuchElementException:
