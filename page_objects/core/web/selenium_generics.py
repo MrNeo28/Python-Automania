@@ -2,9 +2,9 @@
 
 from selenium.webdriver.remote.webdriver import WebDriver
 
-from common.core.web.browser import Browser
-from common.core.web.elements import Finder
-from common.core.mob.app import App
+from page_objects.core.web.browser import Browser
+from page_objects.core.web.elements import Finder
+from page_objects.core.mob.app import App
 
 class Selenium(Browser, Finder, App):
     def __init__(self, driver: WebDriver):

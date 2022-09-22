@@ -1,27 +1,13 @@
-from common.core.web.selenium_generics import Selenium
+from page_objects.core.web.selenium_generics import Selenium
 
 from behave import fixture, use_fixture
+from browserstack.local import Local
 from selenium import webdriver
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 # from selenium.webdriver.chrome.service import Service as ChromeService
 # from webdriver_manager.chrome import ChromeDriverManager
 
 import os, json
-
-# @fixture
-# def selenium_generics(context):
-
-#     caps = {
-#         ""
-#     }
-
-#     driver = webdriver.Remote()
-#     return Selenium(driver)
-
-
-# def before_all(context):
-#     use_fixture(selenium_generics, context)
-
 
 CONFIG_FILE = os.environ['CONFIG_FILE'] if 'CONFIG_FILE' in os.environ else 'config/single.json'
 TASK_ID = int(os.environ['TASK_ID']) if 'TASK_ID' in os.environ else 0
@@ -48,7 +34,7 @@ def stop_local():
         bs_local.stop()
 
 
-def before_feature(context, feature):
+def before_all(context):
     desired_capabilities = CONFIG['environments'][TASK_ID]
 
     for key in CONFIG["capabilities"]:
@@ -58,20 +44,17 @@ def before_feature(context, feature):
     if "browserstack.local" in desired_capabilities and desired_capabilities["browserstack.local"]:
         start_local()
 
-    context.browser = webdriver.Remote(
+    context.driver = webdriver.Remote(
         desired_capabilities=desired_capabilities,
         command_executor="http://%s:%s@hub.browserstack.com/wd/hub" % (BROWSERSTACK_USERNAME, BROWSERSTACK_ACCESS_KEY)
     )
-    context.selenium = Selenium(webdriver.Remote(
-        desired_capabilities=desired_capabilities,
-        command_executor="http://%s:%s@hub.browserstack.com/wd/hub" % (BROWSERSTACK_USERNAME, BROWSERSTACK_ACCESS_KEY)
-    ))
+    context.selenium = Selenium(context.driver)
 
 
-def after_feature(context, feature):
+def after_all(context):
     if context.failed is True:
-        context.browser.execute_script('browserstack_executor: {"action": "setSessionStatus", "arguments": {"status":"failed", "reason": "At least 1 assertion failed"}}')
+        context.driver.execute_script('browserstack_executor: {"action": "setSessionStatus", "arguments": {"status":"failed", "reason": "At least 1 assertion failed"}}')
     if context.failed is not True:
-        context.browser.execute_script('browserstack_executor: {"action": "setSessionStatus", "arguments": {"status":"passed", "reason": "All assertions passed"}}')
-    context.browser.quit()
+        context.driver.execute_script('browserstack_executor: {"action": "setSessionStatus", "arguments": {"status":"passed", "reason": "All assertions passed"}}')
+    context.driver.quit()
     stop_local()
