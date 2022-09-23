@@ -1,29 +1,12 @@
-# Core Libraries
-# Comment for `Appium-Python-Client`
-Appium-Python-Client >=2.0.0
-# Comment for `selenium`
+
+Appium-Python-Client >=2.7.0
 selenium >=4.0.0
-webdriver-manager
 requests >=2.26.0, <3.0.0
 Pillow >=8.4.0, <9.0.0
-# Comment for `opencv-python` and `scikit-image`
-# Retaining them as-is. Still not clear, where these are being used properly, since we are
-# using to Pillow for visual testing/image comparison.
-# TODO: Explore and see if it is used actively, else remove them. (CTG-346)
+
 opencv-python >=4.5.0, <4.6.0
 scikit-image >=0.19.0, <1.0.0
 pandas
-
-# Pytest & its plugins
-pytest >=6.2.5, < 7.0.0
-pytest-rerunfailures >=10.0.0, <11.0.0
-pytest-xdist >=2.5.0, <3.0.0
-pytest-html >=3.1.0, <4.0.0
-pytest-base-url==1.4.2
-# comment for `pytest-selenium`
-# reason for pinning to `2.0.1` is that their github repo's master looks to add support for selenium 4, which we haven't done yet.
-# maybe once we upgrade to selenium 4, we can unpin or make the librarie's version greater.
-# a point to note is that this library is not pushed to PyPi after this release, and this is more than a year old.
 
 # comment for `allure-pytest`
 allure-behave
@@ -32,10 +15,8 @@ allure-python-commons==2.9.45
 
 # Gherkin and Friends
 behave
-cucumber-tag-expressions >=4.0.2, <5.0.0
 gherkin-official >=22.0.0, <23.0.0
 
-# Added during API Implementation
 structlog >=21.2.0, <22.0.0
 rich >=10.12.0, <11.0.0
 better-exceptions >=0.3.3, <1.0.0
@@ -43,19 +24,17 @@ jsonpath-ng >=1.5.3, <2.0.0
 fastnumbers >=3.2.1, <4.0.0
 
 # Utilities
-assertpy >=1.1, <2.0  # latest version released Jul 2020
+assertpy >=1.1, <2.0  
 python-dotenv >=0.15.0, <1.0.0
 Faker >=10.0.0, <11.0.0
 python-box
-# Comment for `imutils` & `diffimg`
-# Utility Package used for image comparison in conjunction with OpenCV
-# TODO: Path to refactor in the category of visual testing related stuffs (CTG-346)
+
 imutils >=0.5.3, <1.0.0
 diffimg >=0.2.3, <1.0.0
 python-dateutil >=2.8.1, <3.0.0
 PyYAML >=6.0.0, <7.0.0
 browserstack-local >=1.2.3, <2.0.0
-lxml >=4.7.1, <5.0.0
+lxml >=4.7.1, <5.0.
 
 # Code Linters and Formatters
 pylint

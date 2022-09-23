@@ -17,7 +17,7 @@ class Browser:
     @property
     def get_title(self) -> str:
         return self.driver.title
-    
+
     @property
     def get_current_url(self) -> str:
         return self.driver.current_url
@@ -25,10 +25,10 @@ class Browser:
     @property
     def get_nums_tabs(self) -> int:
         return len(self.driver.window_handles)
-    
+
     def go_forward(self):
         self.driver.forward()
-    
+
     def go_backward(self):
         self.driver.back()
 
@@ -37,7 +37,7 @@ class Browser:
 
     def close_window(self):
         self.driver.close()
-    
+
     def quit_session(self):
         self.driver.quit()
 

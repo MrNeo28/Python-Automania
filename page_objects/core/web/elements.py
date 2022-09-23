@@ -25,13 +25,11 @@ class Finder:
         super().__init__(self.driver)
 
     def find_element_by_xpath(self, locator) -> WebElement:
-        
+
         wait = WebDriverWait(self.driver, 10)
 
         try:
-            return wait.until(
-                EC.visibility_of_element_located((By.XPATH, locator))
-            )
+            return wait.until(EC.visibility_of_element_located((By.XPATH, locator)))
         except NoSuchElementException:
             logger.error("Unable to locate element")
 
@@ -68,5 +66,12 @@ class Finder:
             return self.wait.until(
                 EC.visibility_of_element_located((By.TAG_NAME, locator))
             )
+        except NoSuchElementException:
+            logger.error("Unable to locate element")
+
+    def find_element_by_link_text(self, locator: str) -> WebElement:
+        wait = WebDriverWait(self.driver, 10)
+        try:
+            return wait.until(EC.visibility_of_element_located((By.LINK_TEXT, locator)))
         except NoSuchElementException:
             logger.error("Unable to locate element")
