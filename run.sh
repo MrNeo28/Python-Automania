@@ -1,1 +1,1 @@
-python -m behave -v --tags=demo2 -f allure -o ./outputs/allure_report 
+python -m behave -v --tags=demo_api -f allure -o ./outputs/allure_report 

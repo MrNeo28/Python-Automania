@@ -13,7 +13,7 @@ import structlog
 logger = structlog.get_logger(__name__)
 
 class App:
-    def __init__(self, driver: WebDriver):
+    def __init__(self, driver: webdriver):
         self.driver = driver
 
     def find_element_by_id(self, locator:str):
