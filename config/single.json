@@ -1,6 +1,6 @@
 {
-    "user": "ashishvishwakarm_UmSqlW",
-    "key": "zQY7ZUWjYsDqq4M2T7fB",
+    "user": "[browserstack_user]",
+    "key": "[browserstack_key]",
   
     "capabilities": {
       "build": "behave-browserstack",
