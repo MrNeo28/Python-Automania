@@ -49,3 +49,6 @@ class Browser:
 
     def set_fullscreen_window(self):
         self.driver.fullscreen_window()
+
+    def wait_until(self, wait: int):
+        self.driver.implicitly_wait(wait)

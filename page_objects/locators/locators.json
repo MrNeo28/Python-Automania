@@ -1,0 +1,20 @@
+{
+  "imdb": {
+    "baseUrl": "https://www.imdb.com/",
+    "searchText": "Pusha The Rise",
+    "searchBox": "//*[@id='suggestion-search']",
+    "searchButton": "//*[@id='iconContext-magnify']",
+    "searchResult": "//table//td//a[contains(text(), 'Pushpa')]",
+    "countryOfOrigin": "//li[@data-testid='title-details-origin']//a",
+    "releaseDate": "(//li[@data-testid='title-details-releasedate']//a)[2]"
+  },
+  "wiki": {
+    "baseUrl": "https://en.wikipedia.org/",
+    "searchText": "Pusha The Rise",
+    "searchBox": "//*[@id='searchInput']",
+    "searchButton": "//*[@id='searchButton']",
+    "searchResult": "//table//td//a[contains(@title, 'Pushpa: The Rise')]",
+    "countryOfOrigin": "//table[@class='infobox vevent']//th[text()='Country']//following-sibling::td",
+    "releaseDate": "//*[text()='Release date']/..//following-sibling::td"
+  }
+}

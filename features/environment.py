@@ -1,5 +1,4 @@
 from page_objects.core.web.selenium_generics import Selenium
-
 from behave import fixture, use_fixture
 from browserstack.local import Local
 from selenium import webdriver
@@ -30,6 +29,16 @@ BROWSERSTACK_ACCESS_KEY = (
     if "BROWSERSTACK_ACCESS_KEY" in os.environ
     else CONFIG["key"]
 )
+
+
+locator_path = "page_objects/locators/locators.json"
+with open(locator_path, 'r') as js:
+    loc = json.load(js)
+
+def get_locator(locator: str): 
+
+    baseLoc, chainLoc = locator.split(" > ")
+    return loc[baseLoc][chainLoc]
 
 
 def start_local():
@@ -66,6 +75,7 @@ def before_all(context):
         % (BROWSERSTACK_USERNAME, BROWSERSTACK_ACCESS_KEY),
     )
     context.selenium = Selenium(context.driver)
+    context.parse_locator = get_locator
 
 
 def after_all(context):

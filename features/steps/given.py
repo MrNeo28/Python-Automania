@@ -1,5 +1,5 @@
 from behave import given
-
+from assertpy import assert_that
 
 @given("User maximize current window")
 def max_window(context):
@@ -10,13 +10,11 @@ def max_window(context):
 def goto_url(context, text):
     context.selenium.navigate_url("https://www.google.com/")
 
-@given("User is on url '(?P<url>.*)'")
-def visit_url(context, url: str):
-    context.selenium.navigate_url(url)
+# @given("User is on url '(?P<url>.*)'")
+# def visit_url(context, url: str):
+#     context.selenium.navigate_url(url)
 
-
-
-@given("User is on url '(?P<url>.*)'")
+@given("User is on url '{url}'")
 def visit_url(context, url: str):
     context.selenium.navigate_url(url)
 

@@ -34,8 +34,10 @@ class Finder:
             logger.error("Unable to locate element")
 
     def find_element_by_id(self, locator) -> WebElement:
+        
+        wait = WebDriverWait(self.driver, 10)
         try:
-            return self.wait.until(EC.visibility_of_element_located((By.ID, locator)))
+            return wait.until(EC.visibility_of_element_located((By.ID, locator)))
         except NoSuchElementException:
             logger.error("Unable to locate element")
 

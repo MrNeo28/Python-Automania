@@ -1,6 +1,6 @@
 from behave import when
 from selenium.webdriver.common.by import By
-from features.locators.locators import get_locator
+from assertpy import assert_that
 
 
 @when('User enters "{search_text}" text in search box')
@@ -19,25 +19,37 @@ def click_search_btn(context):
 
 @when("User enters text '{MovieName}' on '{locator}'")
 def enter_text(context, MovieName: str, locator: str):
-    context.selenium.find_element_by_xpath(get_locator(locator)).send_keys(MovieName)
+    context.selenium.find_element_by_xpath(context.parse_locator(locator)).send_keys(MovieName)
 
 
 @when("User clicks on '{locator}'")
 def click_button(context, locator):
-    context.selenium.find_element_by_xpath(get_locator(locator))
+    context.selenium.find_element_by_xpath(context.parse_locator(locator)).click()
 
 
-@when("User clicks on search results '{locator}'")
+@when("User clicks on search result '{locator}'")
 def click_search(context, locator: str):
-    context.selenium.find_element_by_xpath(get_locator(locator))
+    context.selenium.find_element_by_xpath(context.parse_locator(locator)).click()
 
 
 @when("User is on '{MovieName}' screen")
 def assert_screen(context, MovieName: str):
-    assert context.selenium.get_title == MovieName
+    title = context.selenium.get_title
+    # assert context.selenium.get_title == MovieName, f"Current movie title {text} but excepted title {MovieName}"
+    assert_that(title).contains_ignoring_case(MovieName)
+
+@when("User gets '{origin}' is '{country}'")
+def get_text(context, origin: str, country: str):
+    text = context.selenium.find_element_by_xpath(context.parse_locator(origin)).text
+    assert_that(country).is_equal_to_ignoring_case(text)
 
 
-@when("User gets {locator}")
-def get_text(context, locator: str):
-    text = context.selenium.find_element_by_xpath(get_locator(locator)).text
-    print(text)
+@when("User gets '{date}' on '{actual_date}'")
+def get_text(context, date: str, actual_date: str):
+    text = context.selenium.find_element_by_xpath(context.parse_locator(date)).text
+    assert_that(date).contains(actual_date)
+
+@when("User pause for '{wait:d}' s")
+def wait(context, wait: int):
+    # implicitly_wait is not recommended
+    context.selenium.wait_until(wait)
