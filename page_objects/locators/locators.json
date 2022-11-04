@@ -4,7 +4,7 @@
     "searchText": "Pusha The Rise",
     "searchBox": "//*[@id='suggestion-search']",
     "searchButton": "//*[@id='iconContext-magnify']",
-    "searchResult": "//table//td//a[contains(text(), 'Pushpa')]",
+    "searchResult": "//table//td//a[contains(text(), '%s')]",
     "countryOfOrigin": "//li[@data-testid='title-details-origin']//a",
     "releaseDate": "(//li[@data-testid='title-details-releasedate']//a)[2]"
   },
@@ -13,7 +13,7 @@
     "searchText": "Pusha The Rise",
     "searchBox": "//*[@id='searchInput']",
     "searchButton": "//*[@id='searchButton']",
-    "searchResult": "//table//td//a[contains(@title, 'Pushpa: The Rise')]",
+    "searchResult": "//table//td//a[contains(@title, '%s')]",
     "countryOfOrigin": "//table[@class='infobox vevent']//th[text()='Country']//following-sibling::td",
     "releaseDate": "//*[text()='Release date']/..//following-sibling::td"
   }

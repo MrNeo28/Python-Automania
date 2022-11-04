@@ -27,9 +27,9 @@ def click_button(context, locator):
     context.selenium.find_element_by_xpath(context.parse_locator(locator)).click()
 
 
-@when("User clicks on search result '{locator}'")
-def click_search(context, locator: str):
-    context.selenium.find_element_by_xpath(context.parse_locator(locator)).click()
+@when("User clicks on search result '{locator}' of '{MovieName}'")
+def click_search(context, locator: str, MovieName: str):
+    context.selenium.find_element_by_xpath(context.parse_locator(locator) % MovieName).click()
 
 
 @when("User is on '{MovieName}' screen")
