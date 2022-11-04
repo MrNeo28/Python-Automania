@@ -15,16 +15,16 @@ Feature: User gets Country of Origin and Release Date
 
     Examples: |MovieName|
               |Pushpa: The Rise |
+
   @wiki
   Scenario Outline: : Wiki, Navigates
     Given User is on url 'https://en.wikipedia.org/'
-    When User enters text '<MovieName>' on search box
-    And User clicks on "searchButton"
-    Then User is on search results screen
-    And User clicks on search result
+    When User enters text '<MovieName>' on "wiki > searchBox"
+    And User clicks on "imdb > searchButton"
+    And User clicks on search result "wiki > searchResult"
     And User is on <MovieName> screen
-    And User gets country of origin
-    And User gets release Date
+    And User gets 'wiki > countryOfOrigin'
+    And User gets 'wiki > releaseDate'
 
     Examples: |MovieName|
               |Pushpa: The Rise |
