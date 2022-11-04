@@ -9,3 +9,9 @@ def max_window(context):
 @given('User navigates to "{text}"')
 def goto_url(context, text):
     context.selenium.navigate_url("https://www.google.com/")
+
+@given("User is on url '(?P<url>.*)'")
+def visit_url(context, url: str):
+    context.selenium.navigate_url(url)
+
+
